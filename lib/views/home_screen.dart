@@ -11,73 +11,171 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double width= MediaQuery.of(context).size.width;
+    double height= MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/image/background.png'),
-              fit: BoxFit.fill
-          ),
+    return Stack(
+      children: [
+        Container(color: PaletteColor.blueBackground,
+          height:height,
+          width: width),
+        Image.asset(
+          "assets/image/background_home.png",
+          height: height*0.8,
+          width: width,
+          fit: BoxFit.cover,
         ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('QUAL É O APP?',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Barlow',
-                color: Colors.white
-              ),),
-              Text('DO PESCADOR',
-                style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w800,
-                    fontFamily: 'Barlow',
-                    color: Colors.white
-                ),),
-              Container(
-                margin: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white38,
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: Image.asset('assets/image/logo.png',
-                  height: height*0.2,
-                  width: height*0.2,
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          drawer: DrawerCustom(),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            iconTheme: IconThemeData(color: PaletteColor.blueIcon),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Image.asset(
+                  "assets/image/icon_contacts.png",
+                  height: 30,
+                  width: 30,
+                  fit: BoxFit.cover,
                 ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 50),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Color(0xff298433),
-                      Color(0xff84B923),
+            ],
+          ),
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ButtonCustomHomeGreen(
+                      title: 'calendário do pescador',
+                      image: 'assets/image/icon_calendar.png',
+                    ),
+                    ButtonCustomHomeGreen(
+                      title: 'orgãos importantes',
+                      image: 'assets/image/icon_brazil.png',
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ButtonCustomHomeWhite(
+                      title: 'Onde\ntrabalho',
+                      image: 'assets/image/icon_work.png',
+                    ),
+                    ButtonCustomHomeWhite(
+                      title: 'Eu,\npescador',
+                      image: 'assets/image/icon_fisherman.png',
+                    ),
+                    ButtonCustomHomeWhite(
+                      title: 'Meus\ndireitos',
+                      image: 'assets/image/icon_boat.png',
+                    ),
+                    ButtonCustomHomeWhite(
+                      title: 'Meus\ndeveres',
+                      image: 'assets/image/icon_duties.png',
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36),
+                child: Card(
+                  elevation:3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(8),
+                        height: 50,
+                        width: 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(3),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            tileMode: TileMode.repeated,
+                            colors: [
+                              PaletteColor.normalGreenHome,
+                              PaletteColor.lightGreenHome
+                            ],
+                            stops: [0.0, 0.6],
+                          ),
+                        ),
+                      ),
+                      Text('pergunta frequente',
+                        style: TextStyle(
+                            color: PaletteColor.blueTitle,
+                            fontSize: 14,
+                            fontFamily: 'Barlow',
+                            fontWeight: FontWeight.w600
+                        ),)
                     ],
                   ),
                 ),
-                child: Text('ENTRAR',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'Barlow',
-                      color: Colors.white70
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 36,vertical: 5),
+                child: Card(
+                  elevation:3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(10),
+                              topLeft: Radius.circular(10),
+                          ),
+                          gradient: LinearGradient(
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft,
+                            tileMode: TileMode.repeated,
+                            colors: [
+                              PaletteColor.normalGreenHome,
+                              PaletteColor.lightGreenHome
+                            ],
+                            stops: [0.0, 0.6],
+                          ),
+                        ),
+                        child: Icon(Icons.favorite,color: Colors.white,size: 40,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('pergunta frequente',
+                          style: TextStyle(
+                              color: PaletteColor.blueTitle,
+                              fontSize: 14,
+                              fontFamily: 'Barlow',
+                              fontWeight: FontWeight.w600
+                          ),),
+                      ),
+                    ],
                   ),
                 ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 35,vertical: 5),
+                  child: Image.asset('assets/image/botton_home.png')
               )
             ],
           ),
-        ),
-      ),
+        )
+      ],
     );
   }
 }
