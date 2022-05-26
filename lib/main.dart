@@ -1,6 +1,10 @@
 import '../utils/export.dart';
 
-void main() {
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(
     MaterialApp(
       home: SplashScreen(),

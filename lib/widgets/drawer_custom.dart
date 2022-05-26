@@ -18,12 +18,14 @@ class DrawerCustom extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             TitleDrawer(
+              onTap: ()=>Navigator.pushNamed(context, '/home'),
               title: 'home',
               color: PaletteColor.lightGreen,
               icon: Icons.home,
               sizeIcon: 25.0,
             ),
             TitleDrawer(
+              onTap: (){},
               title: 'calendário',
               color: PaletteColor.lightGreen,
               icon: Icons.calendar_today,
@@ -31,6 +33,7 @@ class DrawerCustom extends StatelessWidget {
               sizeIcon: 0.0,
             ),
             TitleDrawer(
+                onTap: (){},
                 title: 'onde trabalho',
                 image: 'assets/image/icon_work.png',
                 icon: Icons.calendar_today,
@@ -38,6 +41,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
+                onTap: (){},
                 title: 'meus deveres',
                 image: 'assets/image/icon_duties.png',
                 icon: Icons.calendar_today,
@@ -45,6 +49,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
+                onTap: (){},
                 title: 'eu, pescador',
                 image: 'assets/image/icon_fisherman.png',
                 icon: Icons.calendar_today,
@@ -52,6 +57,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
+                onTap: (){},
                 title: 'meus direitos',
                 image: 'assets/image/icon_boat.png',
                 icon: Icons.calendar_today,
@@ -59,6 +65,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
+                onTap: ()=>Navigator.pushNamed(context, '/fala'),
                 title: 'fala pescador(a)',
                 image: 'assets/image/icon_person.png',
                 icon: Icons.calendar_today,
@@ -66,6 +73,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
+                onTap: (){},
                 title: 'orgãos importante',
                 image: 'assets/image/icon_brazil.png',
                 icon: Icons.calendar_today,
@@ -73,12 +81,14 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
+              onTap: (){},
               title: 'sedes da colônia',
               color: PaletteColor.lightGreen,
               icon: Icons.location_on_outlined,
               sizeIcon: 25.0,
             ),
             TitleDrawer(
+              onTap: (){},
               title: 'sobre',
               color: PaletteColor.lightGreen,
               icon: Icons.location_on_outlined,

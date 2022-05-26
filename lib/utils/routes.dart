@@ -12,6 +12,10 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => SplashScreen()
           );
+        case "/fala" :
+          return MaterialPageRoute(
+              builder: (_) => FalaPescadorScreen()
+          );
         default :
           _erroRota();
       }

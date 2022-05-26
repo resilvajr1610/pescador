@@ -9,6 +9,7 @@ class PaletteColor {
   static const Color normalGreen = Color(0xff88BB22);
   static const Color darkGreen = Color(0xff258234);
   static const Color titleGreen = Color(0xff308D36);
+  static const Color searchGreen = Color(0xff70B62E);
   static const Color blue = Color(0xff89D0E9);
   static const Color blueBackground = Color(0xffF0F9FE);
   static const Color blueIcon = Color(0xff006EA5);

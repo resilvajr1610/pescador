@@ -168,9 +168,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 35,vertical: 5),
-                  child: Image.asset('assets/image/botton_home.png')
+              GestureDetector(
+                onTap: ()=>Navigator.pushNamed(context, '/fala'),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 35,vertical: 5),
+                    child: Image.asset('assets/image/botton_home.png')
+                ),
               )
             ],
           ),
