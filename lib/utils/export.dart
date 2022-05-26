@@ -5,6 +5,7 @@ export 'dart:async';
 export '../views/splash_screen.dart';
 export '../views/home_screen.dart';
 export '../views/fala_pescador_screen.dart';
+export '../views/onde_trabalho_screen.dart';
 
 export '../utils/routes.dart';
 export '../utils/palette_color.dart';

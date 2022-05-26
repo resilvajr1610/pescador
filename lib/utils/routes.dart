@@ -16,6 +16,10 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => FalaPescadorScreen()
           );
+        case "/trabalho" :
+          return MaterialPageRoute(
+              builder: (_) => OndeTrabalhoScreen()
+          );
         default :
           _erroRota();
       }

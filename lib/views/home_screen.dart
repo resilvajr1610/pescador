@@ -68,18 +68,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ButtonCustomHomeWhite(
+                      onTap: ()=>Navigator.pushNamed(context, '/trabalho'),
                       title: 'Onde\ntrabalho',
                       image: 'assets/image/icon_work.png',
                     ),
                     ButtonCustomHomeWhite(
+                      onTap: (){},
                       title: 'Eu,\npescador',
                       image: 'assets/image/icon_fisherman.png',
                     ),
                     ButtonCustomHomeWhite(
+                      onTap: (){},
                       title: 'Meus\ndireitos',
                       image: 'assets/image/icon_boat.png',
                     ),
                     ButtonCustomHomeWhite(
+                      onTap: (){},
                       title: 'Meus\ndeveres',
                       image: 'assets/image/icon_duties.png',
                     ),

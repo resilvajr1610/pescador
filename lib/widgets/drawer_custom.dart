@@ -33,7 +33,7 @@ class DrawerCustom extends StatelessWidget {
               sizeIcon: 0.0,
             ),
             TitleDrawer(
-                onTap: (){},
+                onTap: ()=>Navigator.pushNamed(context, '/trabalho'),
                 title: 'onde trabalho',
                 image: 'assets/image/icon_work.png',
                 icon: Icons.calendar_today,

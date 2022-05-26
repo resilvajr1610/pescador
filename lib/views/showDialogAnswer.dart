@@ -11,11 +11,13 @@ class ShowDialogAnswer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Container(
-        padding: EdgeInsets.all(8),
-        child: Text(text,
-            style: TextStyle(color: PaletteColor.blueTitle)
-        )
+      content: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(8),
+          child: Text(text,
+              style: TextStyle(color: PaletteColor.blueTitle)
+          )
+        ),
       ),
       contentPadding: EdgeInsets.symmetric(horizontal: 16,vertical: 10),
       actions: [
