@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       image: 'assets/image/icon_work.png',
                     ),
                     ButtonCustomHomeWhite(
-                      onTap: (){},
+                      onTap: ()=>Navigator.pushNamed(context, '/eu'),
                       title: 'Eu,\npescador',
                       image: 'assets/image/icon_fisherman.png',
                     ),

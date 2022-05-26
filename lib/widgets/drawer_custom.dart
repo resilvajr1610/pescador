@@ -49,7 +49,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 0.0
             ),
             TitleDrawer(
-                onTap: (){},
+                onTap: ()=>Navigator.pushNamed(context, '/eu'),
                 title: 'eu, pescador',
                 image: 'assets/image/icon_fisherman.png',
                 icon: Icons.calendar_today,

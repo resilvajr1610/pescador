@@ -20,6 +20,10 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => OndeTrabalhoScreen()
           );
+        case "/eu" :
+          return MaterialPageRoute(
+              builder: (_) => EuPescadorScreen()
+          );
         default :
           _erroRota();
       }
