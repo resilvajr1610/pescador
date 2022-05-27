@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Stack(
       children: [
-        Container(color: PaletteColor.blueBackground,
+        Container(color: PaletteColor.white,
           height:height,
           width: width),
         Image.asset(
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0.0,
-            iconTheme: IconThemeData(color: PaletteColor.blueIcon),
+            iconTheme: IconThemeData(color: PaletteColor.white),
             actions: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          body: Column(
+          body: ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       image: 'assets/image/icon_fisherman.png',
                     ),
                     ButtonCustomHomeWhite(
-                      onTap: (){},
+                      onTap: ()=>Navigator.pushNamed(context, '/direitos'),
                       title: 'Meus\ndireitos',
                       image: 'assets/image/icon_boat.png',
                     ),

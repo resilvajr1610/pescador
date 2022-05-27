@@ -129,22 +129,25 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
               children: [
                 Stack(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      child: Image.asset( "assets/image/fala_pescador.png",width: 320)
+                    Positioned(
+                      bottom: 25,
+                      child: Container(
+                        alignment: Alignment.topCenter,
+                        padding: EdgeInsets.symmetric(horizontal: 25),
+                        child: Image.asset( "assets/image/fala_pescador.png",width: width*0.7)
+                      ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 112),
+                    Container(
+                      padding: const EdgeInsets.only(top: 70),
                       child: InputSearch(
                         hint: "",
                         controller: controller,
-                        width: width*0.65,
                       ),
                     ),
                   ],
                 ),
                 Container(
-                  height: height * 0.6,
+                  height: height * 0.58,
                   child: StreamBuilder(
                     stream: _controllerData.stream,
                     builder: (context, snapshot) {

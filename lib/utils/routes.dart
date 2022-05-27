@@ -24,6 +24,10 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => EuPescadorScreen()
           );
+        case "/direitos" :
+          return MaterialPageRoute(
+              builder: (_) => MeusDireitosScreen()
+          );
         default :
           _erroRota();
       }

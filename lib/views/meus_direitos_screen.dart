@@ -2,14 +2,14 @@ import 'package:pescadorapp/views/showDialogAnswer.dart';
 
 import '../utils/export.dart';
 
-class OndeTrabalhoScreen extends StatefulWidget {
-  const OndeTrabalhoScreen({Key? key}) : super(key: key);
+class MeusDireitosScreen extends StatefulWidget {
+  const MeusDireitosScreen({Key? key}) : super(key: key);
 
   @override
-  _OndeTrabalhoScreenState createState() => _OndeTrabalhoScreenState();
+  _MeusDireitosScreenState createState() => _MeusDireitosScreenState();
 }
 
-class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
+class _MeusDireitosScreenState extends State<MeusDireitosScreen> {
 
   final controller = TextEditingController();
   FirebaseFirestore db = FirebaseFirestore.instance;
@@ -19,10 +19,13 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
   Future? resultsLoaded;
 
   _data() async {
-    var data = await db.collection("trabalho").get();
+
+    print('entrou');
+    var data = await db.collection("direitos").get();
 
     setState(() {
       _allResults = data.docs;
+      print('teste'+ _allResults.length.toString());
     });
     resultSearchList();
     return "complete";
@@ -128,38 +131,35 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
             ),
             child: ListView(
               children: [
-                Container(
-                  height: height*0.3,
-                  child: Stack(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 25),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset( "assets/image/icon_work.png",width: width*0.4),
-                            Text('Onde\ntrabalho',
-                              style: TextStyle(
-                                  color: PaletteColor.searchGreen,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600
-                              )
+                Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset( "assets/image/icon_boat.png",width: 150),
+                          Text('Meus\ndireitos',
+                            style: TextStyle(
+                                color: PaletteColor.searchGreen,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600
                             )
-                          ],
-                        )
+                          )
+                        ],
+                      )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 112),
+                      child: InputSearch(
+                        hint: "",
+                        controller: controller,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 112),
-                        child: InputSearch(
-                          hint: "",
-                          controller: controller,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 Container(
-                  height: height * 0.52,
+                  height: height * 0.48,
                   child: StreamBuilder(
                     stream: _controllerData.stream,
                     builder: (context, snapshot) {

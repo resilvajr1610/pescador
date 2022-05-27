@@ -119,84 +119,87 @@ class _EuPescadorScreenState extends State<EuPescadorScreen> {
             ],
           ),
           body: Container(
+            height: height*0.8,
             width: double.infinity,
             margin: EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: PaletteColor.white,
               borderRadius: BorderRadius.circular(30)
             ),
-            child: ListView(
-              children: [
-                Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset( "assets/image/icon_fisherman.png",width: 150),
-                          Text('Eu\npescador',
-                            style: TextStyle(
-                                color: PaletteColor.searchGreen,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600
+            child: Container(
+              height: height*0.25,
+              child: ListView(
+                children: [
+                  Stack(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 25),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset( "assets/image/icon_fisherman.png",width: width*0.4),
+                            Text('Eu\npescador',
+                              style: TextStyle(
+                                  color: PaletteColor.searchGreen,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600
+                              )
                             )
-                          )
-                        ],
-                      )
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 112),
-                      child: InputSearch(
-                        hint: "",
-                        controller: controller,
-                        width: width*0.65,
+                          ],
+                        )
                       ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: height * 0.6,
-                  child: StreamBuilder(
-                    stream: _controllerData.stream,
-                    builder: (context, snapshot) {
-                      if(snapshot.hasError)
-                        return Text("Erro ao carregar dados!");
-
-                      switch (snapshot.connectionState) {
-                        case ConnectionState.none:
-                        case ConnectionState.active:
-                        case ConnectionState.waiting:
-                        case ConnectionState.done:
-                          if (_resultsList.length == 0) {
-                            return Center(
-                                child: Text('Sem dados!', style: TextStyle(
-                                    color: PaletteColor.searchGreen,
-                                    fontSize: 20),)
-                            );
-                          } else {
-                            return ListView.builder(
-                                itemCount: _resultsList.length,
-                                itemBuilder: (BuildContext context, index) {
-                                  DocumentSnapshot item = _resultsList[index];
-
-                                  String id = item["id"];
-                                  String question = item["pergunta"];
-                                  String answer = item["resposta"];
-
-                                  return GestureDetector(
-                                    onTap:()=> _showDialog(answer),
-                                    child: ButtonCustomQuestion(
-                                      question: question,
-                                    ),
-                                  );
-                                });
-                          }
-                      }
-                    },
+                      Padding(
+                        padding: const EdgeInsets.only(top: 112),
+                        child: InputSearch(
+                          hint: "",
+                          controller: controller,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  Container(
+                    height: height * 0.52,
+                    child: StreamBuilder(
+                      stream: _controllerData.stream,
+                      builder: (context, snapshot) {
+                        if(snapshot.hasError)
+                          return Text("Erro ao carregar dados!");
+
+                        switch (snapshot.connectionState) {
+                          case ConnectionState.none:
+                          case ConnectionState.active:
+                          case ConnectionState.waiting:
+                          case ConnectionState.done:
+                            if (_resultsList.length == 0) {
+                              return Center(
+                                  child: Text('Sem dados!', style: TextStyle(
+                                      color: PaletteColor.searchGreen,
+                                      fontSize: 20),)
+                              );
+                            } else {
+                              return ListView.builder(
+                                  itemCount: _resultsList.length,
+                                  itemBuilder: (BuildContext context, index) {
+                                    DocumentSnapshot item = _resultsList[index];
+
+                                    String id = item["id"];
+                                    String question = item["pergunta"];
+                                    String answer = item["resposta"];
+
+                                    return GestureDetector(
+                                      onTap:()=> _showDialog(answer),
+                                      child: ButtonCustomQuestion(
+                                        question: question,
+                                      ),
+                                    );
+                                  });
+                            }
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

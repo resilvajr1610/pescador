@@ -24,7 +24,7 @@ class TitleDrawer extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(icon,color: Color(0xff70B62E),size: sizeIcon),
-                image!= null?Image.asset(image,width: 20,height: 20,color: color,):Container(),
+                image!= null?Image.asset(image,width: 30,height: 30,color: color,):Container(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(title,style: TextStyle(color: color,fontSize: 14,fontFamily: 'Barlow'),),

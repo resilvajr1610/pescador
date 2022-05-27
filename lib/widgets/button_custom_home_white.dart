@@ -9,6 +9,10 @@ class ButtonCustomHomeWhite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    double width= MediaQuery.of(context).size.width;
+    double height= MediaQuery.of(context).size.height;
+
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -18,7 +22,7 @@ class ButtonCustomHomeWhite extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Image.asset(image,width: 80,height: 65,),
+            child: Image.asset(image,width: width*0.22,height: width*0.18,),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

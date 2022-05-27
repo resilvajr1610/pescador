@@ -12,8 +12,9 @@ class ButtonCustomQuestion extends StatelessWidget {
     double width= MediaQuery.of(context).size.width;
     double height= MediaQuery.of(context).size.height;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 36,vertical: 10),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       child: Card(
         elevation:3,
         shape: RoundedRectangleBorder(
@@ -42,7 +43,7 @@ class ButtonCustomQuestion extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(6.0),
-              width: width*0.55,
+              width: width*0.5,
               child: AutoSizeText(question,
                 style: TextStyle(
                     color: PaletteColor.blueTitle,
@@ -51,6 +52,7 @@ class ButtonCustomQuestion extends StatelessWidget {
                     fontWeight: FontWeight.w600
                 ),
                 maxLines: 5,
+                minFontSize: 5,
               ),
             ),
             Spacer(),

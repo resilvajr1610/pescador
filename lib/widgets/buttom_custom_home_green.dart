@@ -35,7 +35,10 @@ class ButtonCustomHomeGreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical:10),
-            child: Text(title,
+            child: AutoSizeText(title,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              minFontSize: 5,
               style: TextStyle(color: PaletteColor.white,fontSize: 12,fontFamily: 'Barlow'),),
           ),
         ],

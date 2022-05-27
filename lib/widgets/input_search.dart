@@ -4,16 +4,16 @@ class InputSearch extends StatelessWidget {
 
   final controller;
   final hint;
-  final width;
 
   InputSearch({
     required this.controller,
     required this.hint,
-    required this.width,
 });
 
   @override
   Widget build(BuildContext context) {
+
+    double width= MediaQuery.of(context).size.width;
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
@@ -27,10 +27,10 @@ class InputSearch extends StatelessWidget {
           Icon(Icons.search,color: PaletteColor.white,),
           Container(
             alignment: Alignment.topCenter,
-            width: this.width,
+            width: width*0.6,
             height: 35,
             padding: EdgeInsets.symmetric(horizontal: 10),
-            margin: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+            margin: EdgeInsets.symmetric(horizontal: 5,vertical: 5),
             decoration: BoxDecoration(
               color: PaletteColor.white,
               borderRadius: BorderRadius.circular(15),
