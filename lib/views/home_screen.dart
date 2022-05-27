@@ -28,22 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Scaffold(
           backgroundColor: Colors.transparent,
           drawer: DrawerCustom(),
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            iconTheme: IconThemeData(color: PaletteColor.white),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Image.asset(
-                  "assets/image/icon_contacts.png",
-                  height: 30,
-                  width: 30,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ],
-          ),
+          appBar: AppBarCustom(),
           body: ListView(
             children: [
               Padding(
@@ -83,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       image: 'assets/image/icon_boat.png',
                     ),
                     ButtonCustomHomeWhite(
-                      onTap: (){},
+                      onTap: ()=>Navigator.pushNamed(context, '/deveres'),
                       title: 'Meus\ndeveres',
                       image: 'assets/image/icon_duties.png',
                     ),

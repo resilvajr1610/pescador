@@ -2,14 +2,14 @@ import 'package:pescadorapp/widgets/showDialogAnswer.dart';
 
 import '../utils/export.dart';
 
-class FalaPescadorScreen extends StatefulWidget {
-  const FalaPescadorScreen({Key? key}) : super(key: key);
+class MeusDeveresScreen extends StatefulWidget {
+  const MeusDeveresScreen({Key? key}) : super(key: key);
 
   @override
-  _FalaPescadorScreenState createState() => _FalaPescadorScreenState();
+  _MeusDeveresScreenState createState() => _MeusDeveresScreenState();
 }
 
-class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
+class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
 
   final controller = TextEditingController();
   FirebaseFirestore db = FirebaseFirestore.instance;
@@ -19,10 +19,13 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
   Future? resultsLoaded;
 
   _data() async {
-    var data = await db.collection("fala").get();
+
+    print('entrou');
+    var data = await db.collection("deveres").get();
 
     setState(() {
       _allResults = data.docs;
+      print('teste'+ _allResults.length.toString());
     });
     resultSearchList();
     return "complete";
@@ -104,6 +107,7 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
           drawer: DrawerCustom(),
           appBar: AppBarCustom(),
           body: Container(
+            height: height*0.8,
             width: double.infinity,
             margin: EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -114,16 +118,24 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
               children: [
                 Stack(
                   children: [
-                    Positioned(
-                      bottom: 25,
-                      child: Container(
-                        alignment: Alignment.topCenter,
-                        padding: EdgeInsets.symmetric(horizontal: 25),
-                        child: Image.asset( "assets/image/fala_pescador.png",width: width*0.7)
-                      ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset( "assets/image/icon_duties.png",width: 150),
+                          Text('Meus\ndeveres',
+                            style: TextStyle(
+                                color: PaletteColor.searchGreen,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600
+                            )
+                          )
+                        ],
+                      )
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(top: 70),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 112),
                       child: InputSearch(
                         hint: "",
                         controller: controller,
@@ -132,7 +144,7 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
                   ],
                 ),
                 Container(
-                  height: height * 0.58,
+                  height: height * 0.48,
                   child: StreamBuilder(
                     stream: _controllerData.stream,
                     builder: (context, snapshot) {

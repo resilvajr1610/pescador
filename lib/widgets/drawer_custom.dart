@@ -46,7 +46,7 @@ class DrawerCustom extends StatelessWidget {
                   sizeIcon: 0.0
               ),
               TitleDrawer(
-                  onTap: (){},
+                  onTap: ()=>Navigator.pushNamed(context, '/deveres'),
                   title: 'meus deveres',
                   image: 'assets/image/icon_duties.png',
                   icon: Icons.calendar_today,
@@ -86,7 +86,7 @@ class DrawerCustom extends StatelessWidget {
                   sizeIcon: 0.0
               ),
               TitleDrawer(
-                onTap: (){},
+                onTap: ()=>Navigator.pushNamed(context, '/sedes'),
                 title: 'sedes da colônia',
                 color: PaletteColor.lightGreen,
                 icon: Icons.location_on_outlined,

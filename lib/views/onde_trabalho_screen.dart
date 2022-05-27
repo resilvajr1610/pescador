@@ -1,4 +1,4 @@
-import 'package:pescadorapp/views/showDialogAnswer.dart';
+import 'package:pescadorapp/widgets/showDialogAnswer.dart';
 
 import '../utils/export.dart';
 
@@ -102,22 +102,7 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
         Scaffold(
           backgroundColor: Colors.transparent,
           drawer: DrawerCustom(),
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            iconTheme: IconThemeData(color: PaletteColor.white),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Image.asset(
-                  "assets/image/icon_contacts.png",
-                  height: 30,
-                  width: 30,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ],
-          ),
+          appBar: AppBarCustom(),
           body: Container(
             height: height*0.8,
             width: double.infinity,

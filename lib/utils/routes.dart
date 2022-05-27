@@ -28,6 +28,14 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => MeusDireitosScreen()
           );
+        case "/deveres" :
+          return MaterialPageRoute(
+              builder: (_) => MeusDeveresScreen()
+          );
+        case "/sedes" :
+          return MaterialPageRoute(
+              builder: (_) => SedesColoniaScreen()
+          );
         default :
           _erroRota();
       }
