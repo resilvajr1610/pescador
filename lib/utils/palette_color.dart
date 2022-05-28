@@ -16,4 +16,6 @@ class PaletteColor {
   static const Color blueTitle = Color(0xff096FA7);
   static const Color grey = Color(0xffE4E5E3);
   static const Color greyTitle = Color(0xff777777);
+  static const Color greyCalendar = Color(0xffB1B1B1);
+  static const Color greenCalendar = Color(0xffA3CC8A);
 }

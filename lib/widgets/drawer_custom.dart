@@ -30,7 +30,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 30.0,
               ),
               TitleDrawer(
-                onTap: (){},
+                onTap: ()=>Navigator.pushNamed(context, '/calendario'),
                 title: 'calendário',
                 color: PaletteColor.lightGreen,
                 icon: Icons.calendar_today,
@@ -78,7 +78,7 @@ class DrawerCustom extends StatelessWidget {
                   sizeIcon: 0.0
               ),
               TitleDrawer(
-                  onTap: (){},
+                  onTap: ()=>Navigator.pushNamed(context, '/orgaos'),
                   title: 'orgãos importante',
                   image: 'assets/image/icon_brazil.png',
                   icon: Icons.calendar_today,

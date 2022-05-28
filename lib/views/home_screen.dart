@@ -37,10 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ButtonCustomHomeGreen(
+                      onTap: ()=>Navigator.pushNamed(context, '/calendario'),
                       title: 'calendário do pescador',
                       image: 'assets/image/icon_calendar.png',
                     ),
                     ButtonCustomHomeGreen(
+                      onTap: ()=>Navigator.pushNamed(context, '/orgaos'),
                       title: 'orgãos importantes',
                       image: 'assets/image/icon_brazil.png',
                     ),

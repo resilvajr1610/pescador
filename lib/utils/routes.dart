@@ -40,6 +40,14 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => SobreScreen()
           );
+        case "/orgaos" :
+          return MaterialPageRoute(
+              builder: (_) => OrgaosImportantesScreen()
+          );
+        case "/calendario" :
+          return MaterialPageRoute(
+              builder: (_) => CalendarioPescadorScreen()
+          );
         default :
           _erroRota();
       }
