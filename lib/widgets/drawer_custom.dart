@@ -93,7 +93,7 @@ class DrawerCustom extends StatelessWidget {
                 sizeIcon: 30.0,
               ),
               TitleDrawer(
-                onTap: (){},
+                onTap: ()=>Navigator.pushNamed(context, '/sobre'),
                 title: 'sobre',
                 color: PaletteColor.lightGreen,
                 icon: Icons.location_on_outlined,

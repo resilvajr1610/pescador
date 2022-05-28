@@ -10,6 +10,7 @@ export '../views/eu_pescador_screen.dart';
 export '../views/meus_direitos_screen.dart';
 export '../views/meus_deveres_screen.dart';
 export '../views/sedes_colonia_screen.dart';
+export '../views/sobre_screen.dart';
 
 export '../utils/routes.dart';
 export '../utils/palette_color.dart';

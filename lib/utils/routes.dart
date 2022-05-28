@@ -36,6 +36,10 @@ class Routes{
           return MaterialPageRoute(
               builder: (_) => SedesColoniaScreen()
           );
+        case "/sobre" :
+          return MaterialPageRoute(
+              builder: (_) => SobreScreen()
+          );
         default :
           _erroRota();
       }
