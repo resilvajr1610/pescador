@@ -6,11 +6,14 @@ void main() async{
   await Firebase.initializeApp();
 
   runApp(
-    MaterialApp(
-      home: SplashScreen(),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: Routes.generateRoute,
-      initialRoute: "/splash",
+    ChangeNotifierProvider(
+        create: (context)=> AppSettings(),
+        child: MaterialApp(
+          home: SplashScreen(),
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: Routes.generateRoute,
+          initialRoute: "/splash",
+        ),
     )
   );
 }

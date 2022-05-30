@@ -3,8 +3,10 @@ import '../utils/export.dart';
 class ButtonCustomQuestion extends StatelessWidget {
 
   final question;
+  final onTapFavorite;
+  final iconFavorite;
 
-  ButtonCustomQuestion({required this.question});
+  ButtonCustomQuestion({required this.question,required this.onTapFavorite, required this.iconFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +60,9 @@ class ButtonCustomQuestion extends StatelessWidget {
             Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 12),
-              child: Icon(Icons.favorite_border,color: PaletteColor.searchGreen,),
+              child: GestureDetector(
+                onTap: onTapFavorite,
+                child: Icon(iconFavorite==false? Icons.favorite_border:Icons.favorite,color: PaletteColor.searchGreen,)),
             )
           ],
         ),

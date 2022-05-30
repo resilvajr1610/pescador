@@ -28,8 +28,12 @@ export '../widgets/title_custom_widget.dart';
 export '../widgets/container_contacts_widget.dart';
 export '../widgets/container_contacts_complete_widget.dart';
 export '../widgets/container_calendar.dart';
+export '../widgets/showDialogFavorite.dart';
+export '../widgets/showDialogAnswer.dart';
 
 export '../models/question_model.dart';
+
+export '../configs/app_settings.dart';
 
 export 'package:auto_size_text/auto_size_text.dart';
 export 'package:firebase_core/firebase_core.dart';
@@ -40,3 +44,5 @@ export 'package:flutter_calendar_carousel/classes/event.dart';
 export 'package:flutter_calendar_carousel/classes/event_list.dart';
 export 'package:intl/intl.dart' show DateFormat;
 export 'package:intl/date_symbol_data_local.dart';
+export 'package:shared_preferences/shared_preferences.dart';
+export 'package:provider/provider.dart';

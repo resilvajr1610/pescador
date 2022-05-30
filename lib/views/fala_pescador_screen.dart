@@ -1,5 +1,3 @@
-import 'package:pescadorapp/widgets/showDialogAnswer.dart';
-
 import '../utils/export.dart';
 
 class FalaPescadorScreen extends StatefulWidget {
@@ -17,6 +15,7 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
   List _allResults = [];
   List _resultsList = [];
   Future? resultsLoaded;
+  late int idUsuario;
 
   _data() async {
     var data = await db.collection("fala").get();
@@ -61,6 +60,28 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
         });
   }
 
+  saveFavorite(String idQuestion, String question, String answer)async{
+    db.collection("users").doc(idUsuario.toString()).collection('favorites').doc(idQuestion)
+        .set({
+      "idQuestion": idQuestion,
+      "question": question,
+      "answer": answer,
+    }).then((_) => _showDialogFavorite());
+  }
+
+  _showDialogFavorite() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return ShowDialogFavorite();
+        });
+  }
+
+  readId(){
+    idUsuario = context.watch<AppSettings>().idUsuario;
+    print('onde == $idUsuario');
+  }
+
   @override
   void initState() {
     super.initState();
@@ -86,6 +107,8 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
 
     double width= MediaQuery.of(context).size.width;
     double height= MediaQuery.of(context).size.height;
+
+    readId();
 
     return Stack(
       children: [
@@ -163,6 +186,8 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
                                   return GestureDetector(
                                     onTap:()=> _showDialog(answer),
                                     child: ButtonCustomQuestion(
+                                      onTapFavorite: ()=>saveFavorite(id,question,answer),
+                                      iconFavorite: false,
                                       question: question,
                                     ),
                                   );

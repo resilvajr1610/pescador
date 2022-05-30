@@ -1,5 +1,3 @@
-import 'package:pescadorapp/widgets/showDialogAnswer.dart';
-
 import '../utils/export.dart';
 
 class OndeTrabalhoScreen extends StatefulWidget {
@@ -17,6 +15,7 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
   List _allResults = [];
   List _resultsList = [];
   Future? resultsLoaded;
+  late int idUsuario;
 
   _data() async {
     var data = await db.collection("trabalho").get();
@@ -61,6 +60,28 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
         });
   }
 
+  _showDialogFavorite() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return ShowDialogFavorite();
+        });
+  }
+
+  readId(){
+    idUsuario = context.watch<AppSettings>().idUsuario;
+    print('onde == $idUsuario');
+  }
+
+  saveFavorite(String idQuestion, String question, String answer)async{
+    db.collection("users").doc(idUsuario.toString()).collection('favorites').doc(idQuestion)
+        .set({
+      "idQuestion": idQuestion,
+      "question": question,
+      "answer": answer,
+    }).then((_) => _showDialogFavorite());
+  }
+
   @override
   void initState() {
     super.initState();
@@ -86,6 +107,8 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
 
     double width= MediaQuery.of(context).size.width;
     double height= MediaQuery.of(context).size.height;
+
+    readId();
 
     return Stack(
       children: [
@@ -175,10 +198,13 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
                                   return GestureDetector(
                                     onTap:()=> _showDialog(answer),
                                     child: ButtonCustomQuestion(
+                                      onTapFavorite: ()=>saveFavorite(id,question,answer),
+                                      iconFavorite: false,
                                       question: question,
                                     ),
                                   );
-                                });
+                                }
+                            );
                           }
                       }
                     },

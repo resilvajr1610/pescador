@@ -1,5 +1,3 @@
-import 'package:pescadorapp/widgets/showDialogAnswer.dart';
-
 import '../utils/export.dart';
 
 class MeusDeveresScreen extends StatefulWidget {
@@ -17,6 +15,7 @@ class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
   List _allResults = [];
   List _resultsList = [];
   Future? resultsLoaded;
+  late int idUsuario;
 
   _data() async {
 
@@ -64,6 +63,28 @@ class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
         });
   }
 
+  _showDialogFavorite() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return ShowDialogFavorite();
+        });
+  }
+
+  saveFavorite(String idQuestion, String question, String answer)async{
+    db.collection("users").doc(idUsuario.toString()).collection('favorites').doc(idQuestion)
+        .set({
+      "idQuestion": idQuestion,
+      "question": question,
+      "answer": answer,
+    }).then((_) => _showDialogFavorite());
+  }
+
+  readId(){
+    idUsuario = context.watch<AppSettings>().idUsuario;
+    print('onde == $idUsuario');
+  }
+
   @override
   void initState() {
     super.initState();
@@ -89,6 +110,8 @@ class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
 
     double width= MediaQuery.of(context).size.width;
     double height= MediaQuery.of(context).size.height;
+
+    readId();
 
     return Stack(
       children: [
@@ -175,6 +198,8 @@ class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
                                   return GestureDetector(
                                     onTap:()=> _showDialog(answer),
                                     child: ButtonCustomQuestion(
+                                      onTapFavorite: ()=>saveFavorite(id,question,answer),
+                                      iconFavorite: false,
                                       question: question,
                                     ),
                                   );

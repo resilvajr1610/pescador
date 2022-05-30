@@ -1,6 +1,4 @@
-import 'package:pescadorapp/utils/export.dart';
-
-import '../Utils/export.dart';
+import '../utils/export.dart';
 
 class ShowDialogAnswer extends StatelessWidget {
 
