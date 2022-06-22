@@ -4,14 +4,24 @@ class ContainerCalendar extends StatelessWidget {
   final title;
   final description;
   final date;
+  final dateTime;
 
-  const ContainerCalendar({Key? key, this.title, this.description, this.date}) : super(key: key);
+  const ContainerCalendar({
+    required this.title,
+    required this.description,
+    required this.date,
+    required this.dateTime
+  });
 
   @override
   Widget build(BuildContext context) {
 
     double width= MediaQuery.of(context).size.width;
     double height= MediaQuery.of(context).size.height;
+
+    final today = DateTime.now();
+    final difference = dateTime.difference(today).inDays;
+    final datePrint = difference>0?difference:'0';
 
     return  Container(
       height: height*0.18,
@@ -37,6 +47,7 @@ class ContainerCalendar extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.symmetric(vertical: 4,horizontal: 8),
+                  height: height*0.1,
                   width: width*0.6,
                   child: Text(description,
                     style: TextStyle(
@@ -60,13 +71,46 @@ class ContainerCalendar extends StatelessWidget {
                       topRight: Radius.circular(5),
                     ),
                   ),
-                  child: Text(date,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Barlow',
-                      color: PaletteColor.white,
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Text('restam',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Barlow',
+                            color: PaletteColor.white,
+                          ),
+                        ),
+                      ),
+                      Text('$datePrint dias',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Barlow',
+                          color: PaletteColor.yellow,
+                        ),
+                      ),
+                      Divider(color: PaletteColor.white,indent: 5,endIndent: 5,height: 6,),
+                      Text('data final',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Barlow',
+                          color: PaletteColor.white,
+                        ),
+                      ),
+                      Text(date,
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Barlow',
+                          color: PaletteColor.white,
+                        ),
+                      ),
+                    ],
                   )
               ),
             ),

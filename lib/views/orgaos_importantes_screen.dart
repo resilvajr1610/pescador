@@ -16,7 +16,7 @@ class _OrgaosImportantesScreenState extends State<OrgaosImportantesScreen> {
 
     return Stack(
         children: [
-          Container(color: PaletteColor.grey,
+          Container(color: PaletteColor.white,
               height:height,
               width: width
           ),
@@ -34,7 +34,7 @@ class _OrgaosImportantesScreenState extends State<OrgaosImportantesScreen> {
             body: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: PaletteColor.grey,
+                color: PaletteColor.white,
               ),
               width: double.infinity,
               height: double.infinity,

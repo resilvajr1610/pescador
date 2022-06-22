@@ -16,13 +16,13 @@ class TitleCustomWidget extends StatelessWidget {
           fontWeight: FontWeight.w700,
           fontFamily: 'Barlow',
           color: PaletteColor.greyTitle,
-          shadows: <Shadow>[
-            Shadow(
-              offset: Offset(0.0, 3.0),
-              blurRadius: 12.0,
-              color: PaletteColor.greyTitle,
-            ),
-          ],
+          // shadows: <Shadow>[
+          //   Shadow(
+          //     offset: Offset(0.0, 3.0),
+          //     blurRadius: 12.0,
+          //     color: PaletteColor.greyTitle,
+          //   ),
+          // ],
         ),
       )
     );

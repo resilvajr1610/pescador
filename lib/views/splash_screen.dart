@@ -19,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/image/background.png'),
+              colorFilter: ColorFilter.mode(Colors.white24, BlendMode.screen),
               fit: BoxFit.fill
           ),
         ),
@@ -26,48 +27,17 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: width*0.55,
-                alignment: Alignment.centerLeft,
-                child: Text('QUAL É O APP?',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'Barlow',
-                  color: Colors.white
-                ),),
-              ),
-              Container(
-                width: width*0.55,
-                alignment: Alignment.centerLeft,
-                child: Text('DO PESCADOR',
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w800,
-                      fontFamily: 'Barlow',
-                      color: Colors.white
-                  ),),
-              ),
-              Container(
-                height: height*0.22,
-                width: height*0.22,
-                alignment: Alignment.center,
-                margin: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.white38,
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: Image.asset('assets/image/logo.png',
-                  height: height*0.2,
-                  width: height*0.2,
-                ),
+              Image.asset('assets/image/logoHome.png',
+                height: height*0.3,
+                width: height*0.3,
               ),
               GestureDetector(
                 onTap: ()=>Navigator.pushNamed(context, '/home'),
                 child: Container(
-                  width: width*0.6,
+                  width: height*0.3,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 10),
+                  margin: EdgeInsets.symmetric(vertical: 23),
+                  padding: EdgeInsets.symmetric(vertical: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     gradient: LinearGradient(

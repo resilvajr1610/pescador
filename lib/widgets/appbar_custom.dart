@@ -25,10 +25,9 @@ class AppBarCustom extends StatelessWidget  with PreferredSizeWidget{
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Image.asset(
-              "assets/image/icon_contacts.png",
-              height: 30,
-              width: 30,
-              fit: BoxFit.fitHeight,
+              'assets/image/icon_brazil.png',
+              height: 27,
+              width: 40,
             ),
           ),
         ),

@@ -108,6 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
           "assets/image/background_home.png",
           height: height*0.8,
           width: width,
+          color: Colors.white24,
+          colorBlendMode: BlendMode.screen,
           fit: BoxFit.cover,
         ),
         Scaffold(
@@ -119,23 +121,28 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ButtonCustomHomeGreen(
                       onTap: ()=>Navigator.pushNamed(context, '/calendario'),
-                      title: 'calendário do pescador',
+                      title: 'calendário\ndo pescador',
                       image: 'assets/image/icon_calendar.png',
+                      heightImage: 33.0,
+                      widthImage: 35.0,
                     ),
                     ButtonCustomHomeGreen(
                       onTap: ()=>Navigator.pushNamed(context, '/orgaos'),
-                      title: 'orgãos importantes',
-                      image: 'assets/image/icon_brazil.png',
+                      title: 'contato das\ncolônias',
+                      image: "assets/image/icon_contacts.png",
+                      heightImage: 43.0,
+                      widthImage: 50.0,
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -149,6 +156,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: 'Eu,\npescador',
                       image: 'assets/image/icon_fisherman.png',
                     ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
                     ButtonCustomHomeWhite(
                       onTap: ()=>Navigator.pushNamed(context, '/direitos'),
                       title: 'Meus\ndireitos',
@@ -160,44 +175,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       image: 'assets/image/icon_duties.png',
                     ),
                   ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 36),
-                child: Card(
-                  elevation:3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.all(8),
-                        height: 50,
-                        width: 8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(3),
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            tileMode: TileMode.repeated,
-                            colors: [
-                              PaletteColor.normalGreenHome,
-                              PaletteColor.lightGreenHome
-                            ],
-                            stops: [0.0, 0.6],
-                          ),
-                        ),
-                      ),
-                      Text('pergunta frequente',
-                        style: TextStyle(
-                            color: PaletteColor.blueTitle,
-                            fontSize: 14,
-                            fontFamily: 'Barlow',
-                            fontWeight: FontWeight.w600
-                        ),)
-                    ],
-                  ),
                 ),
               ),
               GestureDetector(

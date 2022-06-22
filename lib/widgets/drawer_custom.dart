@@ -79,7 +79,7 @@ class DrawerCustom extends StatelessWidget {
               ),
               TitleDrawer(
                   onTap: ()=>Navigator.pushNamed(context, '/orgaos'),
-                  title: 'orgãos importante',
+                  title: 'órgãos importantes',
                   image: 'assets/image/icon_brazil.png',
                   icon: Icons.calendar_today,
                   color: PaletteColor.lightGreen,

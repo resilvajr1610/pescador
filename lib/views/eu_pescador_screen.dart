@@ -146,10 +146,10 @@ class _EuPescadorScreenState extends State<EuPescadorScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset( "assets/image/icon_fisherman.png",width: width*0.4),
-                            Text('Eu\npescador',
+                            Text('Eu\npescador(a)',
                               style: TextStyle(
                                   color: PaletteColor.searchGreen,
-                                  fontSize: 24,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w600
                               )
                             )

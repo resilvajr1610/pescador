@@ -4,8 +4,16 @@ class ButtonCustomHomeGreen extends StatelessWidget {
   final image;
   final title;
   final onTap;
+  final heightImage;
+  final widthImage;
 
-  ButtonCustomHomeGreen({required this.image, required this.title,required this.onTap});
+  ButtonCustomHomeGreen({
+    required this.image,
+    required this.title,
+    required this.onTap,
+    required this.heightImage,
+    required this.widthImage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +24,7 @@ class ButtonCustomHomeGreen extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        height: 93,
         width: width*0.35,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -29,18 +38,19 @@ class ButtonCustomHomeGreen extends StatelessWidget {
             ),
           ],
         ),
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(4),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Image.asset(image,height: 40,width: 50,),
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Image.asset(image,height: heightImage,width: widthImage,),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical:10),
+              padding: const EdgeInsets.symmetric(vertical:5),
               child: AutoSizeText(title,
                 textAlign: TextAlign.center,
-                maxLines: 1,
+                maxLines: 2,
                 minFontSize: 5,
                 style: TextStyle(color: PaletteColor.white,fontSize: 12,fontFamily: 'Barlow'),),
             ),

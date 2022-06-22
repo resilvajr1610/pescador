@@ -55,7 +55,7 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
         context: context,
         builder: (context) {
           return ShowDialogAnswer(
-            text: answer
+            text: answer.replaceAll("   ", '\n')
           );
         });
   }
@@ -70,7 +70,6 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
 
   readId(){
     idUsuario = context.watch<AppSettings>().idUsuario;
-    print('onde == $idUsuario');
   }
 
   saveFavorite(String idQuestion, String question, String answer)async{

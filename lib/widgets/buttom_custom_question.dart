@@ -2,7 +2,7 @@ import '../utils/export.dart';
 
 class ButtonCustomQuestion extends StatelessWidget {
 
-  final question;
+  String question;
   final onTapFavorite;
   final iconFavorite;
 
@@ -23,9 +23,10 @@ class ButtonCustomQuestion extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+              alignment: Alignment.centerLeft,
               margin: EdgeInsets.all(8),
               height: 50,
               width: 8,
@@ -45,11 +46,11 @@ class ButtonCustomQuestion extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(6.0),
-              width: width*0.5,
+              width: width*0.58,
               child: AutoSizeText(question,
                 style: TextStyle(
                     color: PaletteColor.blueTitle,
-                    fontSize: 14,
+                    fontSize: 12,
                     fontFamily: 'Barlow',
                     fontWeight: FontWeight.w600
                 ),
@@ -58,8 +59,10 @@ class ButtonCustomQuestion extends StatelessWidget {
               ),
             ),
             Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 12),
+            Container(
+              height: 50,
+              alignment: Alignment.topCenter,
+              margin: const EdgeInsets.only(right: 6.0),
               child: GestureDetector(
                 onTap: onTapFavorite,
                 child: Icon(iconFavorite==false? Icons.favorite_border:Icons.favorite,color: PaletteColor.searchGreen,)),

@@ -20,7 +20,7 @@ class ButtonCustomHomeWhite extends StatelessWidget {
           Card(
             elevation:3,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(15),
             ),
             child: Image.asset(image,width: width*0.22,height: width*0.18,),
           ),

@@ -79,7 +79,6 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
 
   readId(){
     idUsuario = context.watch<AppSettings>().idUsuario;
-    print('onde == $idUsuario');
   }
 
   @override
