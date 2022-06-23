@@ -18,7 +18,7 @@ class _EuPescadorScreenState extends State<EuPescadorScreen> {
   late int idUsuario;
 
   _data() async {
-    var data = await db.collection("pescador").get();
+    var data = await db.collection("pescador").orderBy('time').get();
 
     setState(() {
       _allResults = data.docs;
@@ -79,7 +79,6 @@ class _EuPescadorScreenState extends State<EuPescadorScreen> {
 
   readId(){
     idUsuario = context.watch<AppSettings>().idUsuario;
-    print('onde == $idUsuario');
   }
 
   @override

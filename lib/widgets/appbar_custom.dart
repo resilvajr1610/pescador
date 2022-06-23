@@ -21,7 +21,7 @@ class AppBarCustom extends StatelessWidget  with PreferredSizeWidget{
       ),
       actions: [
         GestureDetector(
-          onTap: ()=>Navigator.pushNamed(context, '/sedes'),
+          onTap: ()=>Navigator.pushNamed(context, '/orgaos'),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Image.asset(

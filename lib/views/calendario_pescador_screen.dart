@@ -13,42 +13,131 @@ class _CalendarioPescadorScreenState extends State<CalendarioPescadorScreen> {
   DateTime _targetDateTime = DateTime.now();
   String _currentMonth = DateFormat.yMMM().format(DateTime.now());
 
-  List<DateTime> dates =[
-    DateTime(2022,06,30),
-    DateTime(2022,07,10),
-  ];
+  DateTime startDateDefeso = DateTime(2021,11,15);
+  DateTime startDateCarteira = DateTime(2022,03,30);
+  DateTime startDateRecolhimento = DateTime(2022,06,01);
+  DateTime endDateDefeso = DateTime(2022,03,15);
+  DateTime endDateCarteira = DateTime(2022,05,30);
+  DateTime endDateRecolhimento = DateTime(2022,08,01);
+  DateTime dayFishMan = DateTime(2022,06,29);
 
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {},
   );
 
+
   @override
   void initState() {
 
+    getDaysBetweenDefeso(){
+      final int diference = endDateDefeso.difference(startDateDefeso).inDays;
+      return diference;
+    }
+
+    getDaysBetweenCarteira(){
+      final int diference = endDateCarteira.difference(startDateCarteira).inDays;
+      return diference;
+    }
+    getDaysBetweenRecolhimento(){
+      final int diference = endDateRecolhimento.difference(startDateRecolhimento).inDays;
+      return diference;
+    }
+
+    final itemsDefeso = List<DateTime>.generate(getDaysBetweenDefeso(), (index){
+      DateTime date = startDateDefeso;
+
+      return date.add(Duration(days: index));
+    });
+
+    final itemsCarteira = List<DateTime>.generate(getDaysBetweenCarteira(), (index){
+      DateTime date = startDateCarteira;
+
+      return date.add(Duration(days: index));
+    });
+
+    final itemsRecolhimento = List<DateTime>.generate(getDaysBetweenRecolhimento(), (index){
+      DateTime date = startDateRecolhimento;
+
+      return date.add(Duration(days: index));
+    });
+
     initializeDateFormatting();
 
-    for(int i =0; i <dates.length; i++){
+    for(int i =0; i <itemsDefeso.length; i++){
       _markedDateMap.add(
-          dates[i],
-        Event(
-          date: dates[i],
-          icon: Container(
-            padding: EdgeInsets.all(2.5),
-            decoration: BoxDecoration(
-                color: PaletteColor.greenCalendar,
-                borderRadius: BorderRadius.all(Radius.circular(1000))
-            ),
-            child: Center(
-              child: Text(
-                dates[i].day.toString(),
-                style: TextStyle(
-                    color: PaletteColor.blueTitle,
-                    fontSize: 16
+          itemsDefeso[i],
+          Event(
+              date: itemsDefeso[i],
+              icon: Container(
+                width: 25,
+                height: 25,
+                decoration: BoxDecoration(
+                    color: PaletteColor.greenCalendar,
+                    borderRadius: BorderRadius.all(Radius.circular(1000))
                 ),
-              ),
-            ),
+                child: Center(
+                  child: Text(
+                    itemsDefeso[i].day.toString(),
+                    style: TextStyle(
+                        color: PaletteColor.blueTitle,
+                        fontSize: 16
+                    ),
+                  ),
+                ),
+              )
           )
-        )
+      );
+    }
+
+    for(int i =0; i <itemsRecolhimento.length; i++){
+      _markedDateMap.add(
+          itemsRecolhimento[i],
+          Event(
+              date: itemsRecolhimento[i],
+              icon: Container(
+                width: 25,
+                height: 25,
+                decoration: BoxDecoration(
+                    color: PaletteColor.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(1000))
+                ),
+                child: Center(
+                  child: Text(
+                    itemsRecolhimento[i].day.toString(),
+                    style: TextStyle(
+                        color: PaletteColor.grey,
+                        fontSize: 16
+                    ),
+                  ),
+                ),
+              )
+          )
+      );
+    }
+
+    for(int i =0; i <itemsCarteira.length; i++){
+      _markedDateMap.add(
+          itemsCarteira[i],
+          Event(
+              date: itemsCarteira[i],
+              icon: Container(
+                width: 25,
+                height: 25,
+                decoration: BoxDecoration(
+                    color: PaletteColor.greenCalendar,
+                    borderRadius: BorderRadius.all(Radius.circular(1000))
+                ),
+                child: Center(
+                  child: Text(
+                    itemsCarteira[i].day.toString(),
+                    style: TextStyle(
+                        color: PaletteColor.grey,
+                        fontSize: 16
+                    ),
+                  ),
+                ),
+              )
+          )
       );
     }
 
@@ -184,16 +273,28 @@ class _CalendarioPescadorScreenState extends State<CalendarioPescadorScreen> {
                     child: ListView(
                       children: [
                         ContainerCalendar(
-                          title: 'Entrega de xxxxx',
-                          description: 'Levar documentos xxxx para xxxxxxx.',
-                          date: '10/07',
-                          dateTime: DateTime.parse('2022-07-10 11:10:55.539743'),
+                          title: 'Período do defeso',
+                          description: 'Paralisação temporária da pesca para fins de reprodução das espécies e aumento do recurso pesqueiro. Carteira de pesca devidamente atualizada; guia da providencia social.',
+                          date: '15/03',
+                          dateTime: DateTime.parse('2022-03-15 11:10:55.539743'),
                         ),
                         ContainerCalendar(
-                          title: 'Entrega de xxxxx',
-                          description: 'Levar documentos xxxx para xxxxxxx.',
-                          date: '30/06',
-                          dateTime: DateTime.parse('2022-06-30 11:10:55.539743'),
+                          title: 'Atualização da carteira de sócio da Colônia Z1',
+                          description: 'Comprovante de endereço atualizado; RG, CPF, titulo de eleitor, documento dos filhos, NIT atualizado.',
+                          date: '30/05',
+                          dateTime: DateTime.parse('2022-05-30 11:10:55.539743'),
+                        ),
+                        ContainerCalendar(
+                          title: 'Recolhimento para a previdência social',
+                          description: 'Trazer por escrito a quantidade de peixes capturados durante o ano.',
+                          date: '01/08',
+                          dateTime: DateTime.parse('2022-08-01 11:10:55.539743'),
+                        ),
+                        ContainerCalendar(
+                          title: 'Dia do pescador',
+                          description: '',
+                          date: '29/06',
+                          dateTime: DateTime.parse('2022-06-29 11:10:55.539743'),
                         )
                       ],
                     ),

@@ -24,7 +24,6 @@ class ContainerCalendar extends StatelessWidget {
     final datePrint = difference>0?difference:'0';
 
     return  Container(
-      height: height*0.18,
       child: Card(
         elevation: 5,
         child: Row(
@@ -33,6 +32,7 @@ class ContainerCalendar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
+                  width: width*0.6,
                   padding: EdgeInsets.symmetric(vertical: 4,horizontal: 8),
                   alignment: Alignment.centerLeft,
                   child: Text(title,
@@ -47,7 +47,6 @@ class ContainerCalendar extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.symmetric(vertical: 4,horizontal: 8),
-                  height: height*0.1,
                   width: width*0.6,
                   child: Text(description,
                     style: TextStyle(

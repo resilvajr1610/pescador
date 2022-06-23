@@ -20,11 +20,10 @@ class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
   _data() async {
 
     print('entrou');
-    var data = await db.collection("deveres").get();
+    var data = await db.collection("deveres").orderBy('time').get();
 
     setState(() {
       _allResults = data.docs;
-      print('teste'+ _allResults.length.toString());
     });
     resultSearchList();
     return "complete";
@@ -82,7 +81,6 @@ class _MeusDeveresScreenState extends State<MeusDeveresScreen> {
 
   readId(){
     idUsuario = context.watch<AppSettings>().idUsuario;
-    print('onde == $idUsuario');
   }
 
   @override

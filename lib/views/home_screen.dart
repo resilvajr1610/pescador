@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   readId(){
     idUsuario = context.watch<AppSettings>().idUsuario;
-    print('tttt == $idUsuario');
   }
 
   dataFavoriteUser() async {
@@ -28,8 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() {
       _listFavorites = data.docs;
-
-      print('tenm : ${_listFavorites.length}');
     });
     return "complete";
   }
@@ -40,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
     Map<String,dynamic>? data = snapshot.data() as Map<String, dynamic>?;
 
     idFirebase = data?["id"];
-    print('fire === $idFirebase');
 
     dataUsers();
     dataFavoriteUser();
@@ -126,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     ButtonCustomHomeGreen(
                       onTap: ()=>Navigator.pushNamed(context, '/calendario'),
-                      title: 'calendário\ndo pescador',
+                      title: 'calendário\ndo pescador (a)',
                       image: 'assets/image/icon_calendar.png',
                       heightImage: 33.0,
                       widthImage: 35.0,
@@ -153,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ButtonCustomHomeWhite(
                       onTap: ()=>Navigator.pushNamed(context, '/eu'),
-                      title: 'Eu,\npescador',
+                      title: 'Eu,\npescador (a)',
                       image: 'assets/image/icon_fisherman.png',
                     ),
                   ],

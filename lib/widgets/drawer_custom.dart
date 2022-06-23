@@ -55,7 +55,7 @@ class DrawerCustom extends StatelessWidget {
               ),
               TitleDrawer(
                   onTap: ()=>Navigator.pushNamed(context, '/eu'),
-                  title: 'eu, pescador',
+                  title: 'eu, pescador (a)',
                   image: 'assets/image/icon_fisherman.png',
                   icon: Icons.calendar_today,
                   color: PaletteColor.titleGreen,

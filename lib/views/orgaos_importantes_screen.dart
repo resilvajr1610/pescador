@@ -75,7 +75,7 @@ class _OrgaosImportantesScreenState extends State<OrgaosImportantesScreen> {
                         ContainerContactsCompleteWidget(
                           location: 'ICMBio | Federal',
                           description: 'Instituto Chico Mendes de Conservação da Biodiversidade em Cruzeiro do Sul',
-                          name: 'Elenildo De Souza | Presidente',
+                          name: 'José Domingos Garcia Inácio | Chefe NGI',
                           email: 'fepeac@gmail.com',
                           address: 'Rua Jamináuas, 1556, Bairro Cruzeirão',
                           phone: '(68) 3322-3380',

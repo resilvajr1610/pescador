@@ -18,7 +18,7 @@ class _FalaPescadorScreenState extends State<FalaPescadorScreen> {
   late int idUsuario;
 
   _data() async {
-    var data = await db.collection("fala").get();
+    var data = await db.collection("fala").orderBy('time').get();
 
     setState(() {
       _allResults = data.docs;

@@ -18,13 +18,10 @@ class _MeusDireitosScreenState extends State<MeusDireitosScreen> {
   late int idUsuario;
 
   _data() async {
-
-    print('entrou');
-    var data = await db.collection("direitos").get();
+    var data = await db.collection("direitos").orderBy('time').get();
 
     setState(() {
       _allResults = data.docs;
-      print('teste'+ _allResults.length.toString());
     });
     resultSearchList();
     return "complete";
@@ -82,7 +79,6 @@ class _MeusDireitosScreenState extends State<MeusDireitosScreen> {
 
   readId(){
     idUsuario = context.watch<AppSettings>().idUsuario;
-    print('onde == $idUsuario');
   }
 
   @override

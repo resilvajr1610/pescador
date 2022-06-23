@@ -18,7 +18,7 @@ class _OndeTrabalhoScreenState extends State<OndeTrabalhoScreen> {
   late int idUsuario;
 
   _data() async {
-    var data = await db.collection("trabalho").get();
+    var data = await db.collection("trabalho").orderBy('time').get();
 
     setState(() {
       _allResults = data.docs;
