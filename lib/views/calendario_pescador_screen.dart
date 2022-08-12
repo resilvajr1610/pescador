@@ -29,6 +29,8 @@ class _CalendarioPescadorScreenState extends State<CalendarioPescadorScreen> {
   @override
   void initState() {
 
+    _data();
+
     getDaysBetweenDefeso(){
       final int diference = endDateDefeso.difference(startDateDefeso).inDays;
       return diference;
@@ -144,6 +146,18 @@ class _CalendarioPescadorScreenState extends State<CalendarioPescadorScreen> {
     super.initState();
   }
 
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  List _allResults=[];
+
+  _data()async{
+    var data = await db.collection("calendary").orderBy("time").get();
+
+    setState(() {
+      _allResults = data.docs;
+      print(_allResults.length);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -270,33 +284,34 @@ class _CalendarioPescadorScreenState extends State<CalendarioPescadorScreen> {
                   ),
                   Container(
                     height: height*0.34,
-                    child: ListView(
-                      children: [
-                        ContainerCalendar(
-                          title: 'Período do defeso',
-                          description: 'Paralisação temporária da pesca para fins de reprodução das espécies e aumento do recurso pesqueiro. Carteira de pesca devidamente atualizada; guia da providencia social.',
-                          date: '15/03',
-                          dateTime: DateTime.parse('2022-03-15 11:10:55.539743'),
-                        ),
-                        ContainerCalendar(
-                          title: 'Atualização da carteira de sócio da Colônia Z1',
-                          description: 'Comprovante de endereço atualizado; RG, CPF, titulo de eleitor, documento dos filhos, NIT atualizado.',
-                          date: '30/05',
-                          dateTime: DateTime.parse('2022-05-30 11:10:55.539743'),
-                        ),
-                        ContainerCalendar(
-                          title: 'Recolhimento para a previdência social',
-                          description: 'Trazer por escrito a quantidade de peixes capturados durante o ano.',
-                          date: '01/08',
-                          dateTime: DateTime.parse('2022-08-01 11:10:55.539743'),
-                        ),
-                        ContainerCalendar(
-                          title: 'Dia do pescador',
-                          description: '',
-                          date: '29/06',
-                          dateTime: DateTime.parse('2022-06-29 11:10:55.539743'),
-                        )
-                      ],
+                    child: ListView.builder(
+                      itemCount: _allResults.length,
+                      itemBuilder: (BuildContext context,int index){
+                        DocumentSnapshot item = _allResults[index];
+
+                        int day = int.parse(item['day']);
+                        int month = int.parse(item['month']);
+                        String dayNew ='0';
+                        String monthNew ='0';
+                        if(day<10){
+                          dayNew = '0$day';
+                        }else{
+                          dayNew='$day';
+                        }
+
+                        if(month<10){
+                          monthNew = '0$month';
+                        }else{
+                          monthNew='$month';
+                        }
+
+                        return ContainerCalendar(
+                          title: item['title'],
+                          description: item['description'],
+                          date: '$dayNew/$monthNew',
+                          dateTime: item['target'].toDate(),
+                        );
+                      },
                     ),
                   )
                 ],

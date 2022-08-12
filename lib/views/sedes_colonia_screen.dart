@@ -8,6 +8,27 @@ class SedesColoniaScreen extends StatefulWidget {
 }
 
 class _SedesColoniaScreenState extends State<SedesColoniaScreen> {
+
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  List _allResults=[];
+
+  _data()async{
+    var data = await db.collection("cologne").orderBy("time").get();
+
+    setState(() {
+      _allResults = data.docs;
+      print(_allResults.length);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _data();
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -44,16 +65,21 @@ class _SedesColoniaScreenState extends State<SedesColoniaScreen> {
                   TitleCustomWidget(
                     text: 'Sedes da Colônia',
                   ),
-                  ContainerContactsWidget(
-                    location: 'Colônia Z1',
-                    address: 'Rua Minas Gerais, 201, bairro Alumínio - Cruzeiro do Sul/ AC',
-                    phone: '(68) 9992-7040',
+                  Container(
+                    height: height*0.65,
+                    child: ListView.builder(
+                      itemCount: _allResults.length,
+                      itemBuilder: (BuildContext context,int index){
+                        DocumentSnapshot item = _allResults[index];
+
+                        return ContainerContactsWidget(
+                          location: item['institution'],
+                          address: item['address'],
+                          phone: item['phone'],
+                        );
+                      },
+                    ),
                   ),
-                  ContainerContactsWidget(
-                    location: 'Federação dos Pescados do Estado do Acre - FEDEAC',
-                    address: 'Rua Minas Gerais, 201, bairro Alumínio - Cruzeiro do Sul/ AC',
-                    phone: '(68) 9992-7040',
-                  )
                 ],
               ),
             ),

@@ -8,6 +8,27 @@ class OrgaosImportantesScreen extends StatefulWidget {
 }
 
 class _OrgaosImportantesScreenState extends State<OrgaosImportantesScreen> {
+
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  List _allResults=[];
+
+  _data()async{
+    var data = await db.collection("governament").orderBy("time").get();
+
+    setState(() {
+      _allResults = data.docs;
+      print(_allResults.length);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _data();
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -46,41 +67,20 @@ class _OrgaosImportantesScreenState extends State<OrgaosImportantesScreen> {
                   ),
                   Container(
                     height: height*0.65,
-                    child: ListView(
-                      children: [
-                        ContainerContactsCompleteWidget(
-                          location: 'SFA/AC | Federal',
-                          description: 'Superintendência Federalde Agricultura, Pecuaria e Abastecimento do Acre',
-                          name: 'Fernando Bortoloso | Superintendente',
-                          email: 'gab-ac@agro.gov.br',
-                          address: 'Rodovia AC-40, 793, Segundo Distrito - Rio Branco/ac',
-                          phone: '(68) 3212-1305',
-                        ),
-                        ContainerContactsCompleteWidget(
-                          location: 'SFA/AC | Estadual',
-                          description: 'Serviço de Aquicultura e Pesca',
-                          name: 'Marcelo Araripe | Chefe',
-                          email: 'marcelo.araripe@agricultura.gov.br',
-                          address: 'Rodovia AC-40, 793, Segundo Distrito - Rio Branco/ac',
-                          phone: '(68) 3212-1309',
-                        ),
-                        ContainerContactsCompleteWidget(
-                          location: 'FEPEAC | Estadual',
-                          description: 'Federação de Pescadores do Estado do Acre',
-                          name: 'Elenildo De Souza | Presidente',
-                          email: 'fepeac@gmail.com',
-                          address: 'Rua Rio Grande do Sul, 141, Centro, Rio Branco/ac',
-                          phone: '(68) 99957-6900',
-                        ),
-                        ContainerContactsCompleteWidget(
-                          location: 'ICMBio | Federal',
-                          description: 'Instituto Chico Mendes de Conservação da Biodiversidade em Cruzeiro do Sul',
-                          name: 'José Domingos Garcia Inácio | Chefe NGI',
-                          email: 'fepeac@gmail.com',
-                          address: 'Rua Jamináuas, 1556, Bairro Cruzeirão',
-                          phone: '(68) 3322-3380',
-                        ),
-                      ],
+                    child: ListView.builder(
+                      itemCount: _allResults.length,
+                      itemBuilder: (BuildContext context,int index){
+                        DocumentSnapshot item = _allResults[index];
+
+                        return ContainerContactsCompleteWidget(
+                          location: '${item['institution']} | ${item['management']}',
+                          description: '',
+                          name: '${item['name']} | ${item['office']}',
+                          email: item['email'],
+                          address: item['address'],
+                          phone: item['phone'],
+                        );
+                      },
                     ),
                   ),
                 ],
